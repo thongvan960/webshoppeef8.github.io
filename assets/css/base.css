@@ -1,0 +1,241 @@
+/* file css dùng chung  */
+
+/* Tạo biến dùng chung */
+:root {
+    --white-color: #fff;
+    /* Tạo chữ gần đen để người dùng đọc vào không bị mờ mắt */
+    --text-color: #333;
+    --black-color: #000;
+    --primary-color: #ee4d2d;
+    --header-height: 120px;
+    --navbar-height: 35px;
+    --header-width-search: calc(var(--header-height) - var(--navbar-height));
+    --star-gold-color: #ffce3d;
+    --header-sort-bar-height: 46px;
+
+}
+
+/* Thuộc tính CSS basic */
+
+* {
+    /* Thuộc tính mặc định tạo ra để cho phần tử con kế thừa từ box-sizing của thẻ HTML*/
+    box-sizing: inherit;
+}
+
+html {
+    /* Mặc định 100% thì 1rem = 16px, Nên 62.5% thì 1rem = 10px */
+    font-size: 62.5%;
+    /* Độ cao chữ mặc định cho trang web */
+    line-height: 1.6rem;
+    /* Font-Family */
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Thuộc tính dành cho Responsive */
+
+.grip__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+/* Test */
+.grip__column-2 {
+    width: 16.6667%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.grip__column-10 {
+    width: 83.3333%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.grip__column-2-4 {
+    width: 20%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animation growth */
+@keyframes grown {
+    from {
+        transform: scale(var(--grown-from));
+    }
+    to {
+        transform: scale(var(--grown-to));
+    }
+} 
+/* modal */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    display: none;
+
+}
+/* Open modal */
+.open {
+    display: flex;
+}
+.close {
+    display: none;
+}
+.modal__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    animation: fadeIn linear 0.1s;
+}
+.modal__body {
+    --grown-from: 0.7;
+    --grown-to: 1;
+    position: relative;
+    margin: auto;
+    z-index: 2; 
+    animation: grown linear 0.1s;
+}
+
+/* Button */
+
+.btn {
+    min-width: 124px;
+    font-size: 1.5rem;
+    padding: 6px 25px;
+    border-radius: 2px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--text-color);
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.btn.auth-form__controls-btn--back:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+.btn.btn--size-s {
+    font-size: 1.2rem;
+    height: 30px;
+}
+.btn.btn--primary {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+
+/* Select  option*/
+.select-input {
+    position: relative;
+    background-color: var(--white-color);
+    height: 36px;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 2px;
+    padding: 0 16px;
+}
+.select-input__label {
+    font-size: 1.5rem;
+    color: var(--text-color);
+
+}
+.select-input-icon {
+    font-size: 1.5rem;
+    color: #555555;
+}
+.select-input__option {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 38px;
+    background-color: var(--white-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    display: none;
+    border-radius: 2px;
+    overflow: hidden;
+    z-index: 1;
+
+}
+.select-input::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 20px;
+    position: absolute;
+    top: 86%;
+    left: 0;
+}
+.select-input:hover .select-input__option {
+    display: block;
+}
+.select-input__item {
+    list-style: none;
+}
+.select-input__link {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 12px 16px;
+    display: block;
+}
+.select-input__link:first-child {
+    margin-top: 4px;
+}
+.select-input__link:last-child {
+    margin-bottom: 4px;
+}
+.select-input__link:hover {
+    color: var(--primary-color);
+}
+
+/* Pagination */
+.home-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.home-pagination__item {
+    list-style: none;
+    margin: 0 14px;
+
+}
+.home-pagination__item--active .home-pagination__link{
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+.home-pagination__item--active .home-pagination__link:hover {
+    background-color: #ef694e;
+}
+
+.home-pagination__link {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 2rem;
+    height: 30px;
+    min-width: 40px;
+    display: block;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 2px;
+
+}
